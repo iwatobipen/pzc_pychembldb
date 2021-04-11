@@ -1239,7 +1239,7 @@ class p_con:
             try:
                 pattern = calculator.CalcDescriptors(sample)
                 use = True
-            except e:
+            except Exception:
                 sys.stderr.write("Error computing descriptors for %s, skip" % sample)
 
             if use:
