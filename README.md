@@ -18,5 +18,5 @@
 - After training model, you can view summary table.
 
  ```
- $ python p_con_pychembldb.py accession=P43088 -unique
+ $ python p_con_pychembldb.py --accession=P43088 --uniq
  ```
