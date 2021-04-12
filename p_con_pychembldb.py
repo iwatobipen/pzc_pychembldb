@@ -1264,7 +1264,7 @@ if __name__ == "__main__":
       help="Accession ID of Protein (hint: P43088 is Vitamin_D_Receptor with ~200 compounds)",
       default='')
     parser.add_option('--rof', action='store_true', dest='onefile', help='remove obsolete Files',
-                      default=False)
+         options             default=False)
     parser.add_option('--dupl', action='store_true', dest='dupl', help='use only duplicates',
                       default=False)
     parser.add_option('--uniq', action='store_true', dest='uniq', help='use only uniques',
@@ -1291,8 +1291,6 @@ if __name__ == "__main__":
         print(usage)
         sys.exit(-1)
     elif len(combineItems) == 2 and len(combineItems[0]) > 0 and len(combineItems[1]) > 0:
-        cur_file = _04.combine(combineItems[0], combineItems[1])
-        print("File: %s" % cur_file)
         sys.exit(0)
 
     code = options.accession.split(':')
