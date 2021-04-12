@@ -270,18 +270,6 @@ def cohens_kappa(table, weights=None, return_results=True, wt=None):
     else:
         return kappa
 
-#https://medium.com/@yamasaKit/rdkit-2d-descriptor-%E3%81%A7%E3%81%82%E3%82%8B-ipc-%E3%81%AE%E5%80%A4%E3%81%8C%E9%9D%9E%E5%B8%B8%E3%81%AB%E5%A4%A7%E3%81%8D%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%87%A6%E6%B3%95-d38a47938024
-def calculate_descriptors(mol, names=None, ipc_avg=False):
-    if names is None:
-        names = [d[0] for d in Descriptors._descList]
-    calc = MoleculeDescriptors.MolecularDescriptorCalculator(names)
-    descs = calc.CalcDescriptors(mol)
-    descs = pd.DataFrame(descs, columns=names)
-    if 'Ipc' in names and ipc_avg:
-        descs['Ipc'] = [Descriptors.Ipc(mol, avg=True)
-                        for mol in mols]
-    return descs
-
 
 def to_table(data, bins=None):
     '''convert raw data with shape (subject, rater) to (rater1, rater2)
@@ -1264,7 +1252,7 @@ if __name__ == "__main__":
       help="Accession ID of Protein (hint: P43088 is Vitamin_D_Receptor with ~200 compounds)",
       default='')
     parser.add_option('--rof', action='store_true', dest='onefile', help='remove obsolete Files',
-         options             default=False)
+                      default=False)
     parser.add_option('--dupl', action='store_true', dest='dupl', help='use only duplicates',
                       default=False)
     parser.add_option('--uniq', action='store_true', dest='uniq', help='use only uniques',
